@@ -1,0 +1,18 @@
+<div class="pagination-container">
+  <div class="show" style="color: #6d83a7; font-weight: 400; font-size: 16px">
+    Đã hiển thị {{ (pageIndex ) * pageSize + 1 }} - {{ Math.min((pageIndex + 1) * pageSize, totalItems) }}
+    trên {{ totalItems }} kết quả
+  </div>
+  <div class="pagination">
+    <div class="data-pages">
+      <a href="#" (click)="onChangePage(1)">&laquo;</a>
+      <a href="#" *ngFor="let page of pages" [class.active]="page === (pageIndex + 1)" (click)="onChangePage(page)">{{page}}</a>
+      <a href="#" (click)="onChangePage(totalPages)">&raquo;</a>
+    </div>
+    <div class="option-data-pages">
+      <mat-select style="width: 150px" class="form-control" (selectionChange)="onChangePage($event.value)">
+        <mat-option *ngFor="let page of pages" [value]="page">Đến trang {{page}}</mat-option>
+      </mat-select>
+    </div>
+  </div>
+</div>

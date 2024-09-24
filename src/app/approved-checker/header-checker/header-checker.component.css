@@ -1,0 +1,56 @@
+.navbar>.container-fluid{
+  display: block;
+  margin-left: 16px;
+}
+.menu {
+  flex: 1;
+  justify-content: right;
+  align-items: center;
+}
+
+.menu-item {
+  padding: 14px 20px;
+  text-decoration: none;
+  color: rgb(69, 12, 225);
+  transition: background-color 0.3s;
+  font-size: 1.2rem;
+}
+.btnbutton {
+  background-color: blueviolet;
+  border-radius: 25px;
+}
+
+.btnbutton:hover {
+  background-color: rgb(69, 12, 225);
+  border-radius: 25px;
+  border: 1px solid aqua;
+}
+
+.multi-box {
+  height: auto;
+  padding-right: 16px;
+  padding-left: 10px;
+}
+.text-icon{
+  padding-left: 10px;
+}
+.text-icon:hover{
+  color: rgb(69, 12, 225);
+}
+.maker-badge{
+  margin: 8px;
+  display: flex;
+  padding: 8px 26px;
+  border-radius: 20px;
+  background: var(--alias-primary-200, #DAE4FF);
+  color: rgb(130, 86, 246);
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgb(163, 127, 253);
+}
+.avatar{
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+}
+

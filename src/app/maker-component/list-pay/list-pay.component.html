@@ -1,0 +1,206 @@
+<app-header></app-header>
+<div
+  class="main-content"
+  style="width: 100%; height: 100%">
+  <div class="title">
+    <div class="title-container">
+      <div class="title-text" style="color: #6d83a7; font-weight: 600">
+        Beneficiary management
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="beneficiary-container">
+      <div class="beneficiary-content">
+        <h1>Quản lý người thụ hưởng</h1>
+        <div class="beneficiary-header">
+          <span class="cnt"><span>Thanh toán và chuyển tiền</span></span>
+        </div>
+        <div class="beneficiary-box">
+          <div class="beneficiary-content" id="">
+            <div class="search-container">
+              <form action="#" (ngSubmit)="searchBeneficiary(); $event.preventDefault()">
+                <div class="input-container" >
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm.."
+                    name="search"
+                    [(ngModel)]="searchQuery"
+                    (ngModelChange)="validateSearchQuery($event.toUpperCase())"
+                    [maxlength]="69"
+                  />
+                  <button type="submit" class="search-btn">
+                    <i class="fa fa-search" style="color: #b162ff"></i>
+                  </button>
+                </div>
+              </form>
+              <div class="btnbutton-filter">
+                <button
+                  class="btn"
+                  type="button"
+                  (click)="toggleFilter()"
+                  style="font-weight: bold"
+                >
+                  <i class="fas fa-light fa-filter"></i>
+                  Bộ lọc
+                </button>
+              </div>
+            </div>
+          </div>
+          <!--Chỉ hiện khi nhấn vào "Bộ lọc"-->
+          <div *ngIf="showFilter" class="condition-filter">
+            <mat-form-field>
+              <mat-select placeholder="Loại giao dịch" class="custom-placeholder">
+                <mat-option value="option-one">Thanh toán</mat-option>
+                <mat-option value="option-two"
+                >Chuyển tiền trong nước
+                </mat-option
+                >
+                <mat-option value="option-three"
+                >Chuyển tiền quốc tế
+                </mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+            <div class="d-flex">
+              <div class="reset">
+                <button type="button" class="clear-btn btn-sm">Thiết lập lại</button>
+              </div>
+              <div class="search">
+                <button type="button" class="clear-btn btn-sm">Áp dụng</button>
+              </div>
+            </div>
+          </div>
+          <!--                     Ko call được API hoặc danh sách trống -->
+          <div *ngIf="!apiSuccess; else tableContent" class="table-empty-container">
+            <div class="table-empty">
+              <div class="empty-data">
+                <div class="empty-img">
+                  <img src="./../../assets/images/empty.jpg" alt=""/>
+                </div>
+                <span class="empty-content" style="color: #6d83a7"
+                >Danh sách thụ hưởng trống</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Truy vấn không có kết quả -->
+          <div *ngIf="!hasResults" class="table-empty-container">
+            <div class="table-empty">
+              <div class="empty-data">
+                <div class="empty-img">
+                  <img src="./../../assets/images/empty-filter.svg" alt=""/>
+                </div>
+                <div class="empty-text">
+                            <span
+                              class="empty-content"
+                              style="font-weight: 600"
+                            >Không tìm được kết quả phù hợp</span
+                            >
+                  <span class="empty-content"
+                  >Vui lòng nhập tìm kiếm khác</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hiển thị danh sách -->
+          <ng-template #tableContent>
+            <div class="d-flex justify-content-between align-items-center">
+              <div *ngIf="hasResults" class="beneficiary-list-box">
+                <button class="clear-btn" (click)="deleteSelected()" [disabled]="selection.isEmpty()">Xóa</button>
+              </div>
+              <div class="btnbutton">
+                <button mat-button
+                        class="btn"
+                        type="button"
+                        style="color: white; font-weight: bold"
+                        (click)="openAdd()"
+                >
+                  <i class="fas fa-light fa-plus"></i>
+                  Thêm mới
+                </button>
+              </div>
+            </div>
+            <div *ngIf="hasResults" class="table-list">
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                  [checked]="selection.hasValue() && isAllSelected()"
+                                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                  [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(row) : null"
+                                  [checked]="selection.isSelected(row)"
+                                  [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="cardOwnerName">
+                  <th mat-header-cell *matHeaderCellDef>Tên chủ thẻ</th>
+                  <td mat-cell *matCellDef="let element"> {{ element.bankAccount.name }}</td>
+                </ng-container>
+                <ng-container matColumnDef="logo">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element">
+                    <img
+                      class="bank-logo"
+                      src="{{element.bankAccount.bank.logo}}"
+                      style="width: 45px ; height: 30px"
+                      alt=""
+                    /></td>
+                </ng-container>
+                <ng-container matColumnDef="cardNumber">
+                  <th mat-header-cell *matHeaderCellDef> Số tài khoản</th>
+                  <td mat-cell *matCellDef="let element" matTooltip="Xem chi tiết" (click)="detailShow(element)"
+                      class="card-number"> {{ element.bankAccount.code }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="bankName">
+                  <th mat-header-cell *matHeaderCellDef>Tên ngân hàng hưởng thụ</th>
+                  <td mat-cell *matCellDef="let element"> {{ element.bankAccount.bank.name }}
+                    <span> ({{ element.bankAccount.bank.shortname }})</span></td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef>Hành động</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="action">
+                      <button class="update" matTooltip="Chỉnh sửa" (click)="updateShow(element)">
+                        <i class="fas fa-pen"></i>
+                      </button>
+                      <button class="delete">
+                        <i class="fas fa-trash" matTooltip="Xóa" (click)="deleteShow(element)"></i>
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+                  <td mat-cell *matCellDef="let element" class="status-container">
+                    <div *ngIf="element.approvedby" class="status-text">
+                      <span class="maker-badge fs-xs fw-semibold">Đã xử lý</span>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+          </ng-template>
+          <app-pagination *ngIf="totalPages > 1 && hasResults"
+                          [pageSize]="pageSize"
+                          [pageIndex]="pageIndex"
+                          [totalItems]="totalPages * pageSize"
+                          (pageChange)="onChangePage($event + 1)">
+          </app-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

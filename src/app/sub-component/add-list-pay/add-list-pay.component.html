@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-between">
+  <div class="title"><h2>{{ inputdata.title }}</h2></div>
+  <div class="close-icon"><img src="../../../assets/images/close_icon.svg" width="20px" height="20px"
+                               (click)="closeup()"></div>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="product">{{ inputdata.product }}</label>
+      <input type="text" style="background-color: #d6d6d6" class="form-input" id="product" formControlName="product"
+             value="Thanh toán & Chuyển tiền"
+             readonly>
+    </div>
+    <div class="form-group">
+      <label>{{ inputdata.transaction }} <span style="color: red">{{ inputdata.icon }}</span></label>
+      <mat-select formControlName="transactionType" class="form-input">
+        <mat-option value="Thanh toán">Thanh toán</mat-option>
+        <mat-option value="Chuyển tiền trong nước">Chuyển tiền trong nước</mat-option>
+        <mat-option value="Chuyển tiền quốc tế">Chuyển tiền quốc tế</mat-option>
+      </mat-select>
+    </div>
+    <div class="form-group">
+      <label>{{ inputdata.method }} <span style="color: red">{{ inputdata.icon }}</span></label>
+      <mat-select formControlName="transactionMethod" class="form-input" (selectionChange)="onMethodChange($event)" >
+        <mat-option value="Chuyển qua số tài khoản">Chuyển qua số tài khoản</mat-option>
+        <mat-option value="Chuyển qua số thẻ">Chuyển qua số thẻ</mat-option>
+      </mat-select>
+
+    </div>
+    <div class="form-group">
+      <label>{{ inputdata.name }} <span style="color: red">{{ inputdata.icon }}</span></label>
+      <mat-select formControlName="nameOfBank" class="form-input" placeholder="Chọn ngân hàng thụ hưởng">
+        <mat-select-trigger class="d-flex align-items-center">
+          <img *ngIf="getLogo()" [src]="getLogo()" alt="" width="60" height="35">
+          <div class="name-of-bank">
+            {{ getBankName() }}<span> ({{ getBankCd() }})</span>
+          </div>
+        </mat-select-trigger>
+        <div class="search" style="margin: 20px;">
+            <input matInput (keyup)="applyFilter($event)" type="search" id="query" name="query" placeholder="Tìm kiếm"  #input>
+            <button class="search-btn"><i class="fas fa-search" style="color: blueviolet"></i></button>
+        </div>
+        <div *ngIf="!hasResults" class="table-emty-container">
+          <div class="table-emty">
+            <div class="empty-data">
+              <div class="emty-img">
+                <img src="./../../assets/images/empty-filter.svg" alt="" style="width: 75px; height: 75px"/>
+              </div>
+              <div class="empty-text">
+                <div class="empty-content" style="color: #201e1e; font-weight: 500">Không tìm được kết quả phù hợp</div>
+                <div class="empty-content" style="color: #676a6a; font-weight: 500">Vui lòng tìm kiếm bằng từ khóa khác</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-option *ngFor="let bank of bankName" [value]="bank.code">
+          <div class="d-flex align-items-center">
+            <img [src]="bank.logo" width="60" height="35" alt="#">
+            <div class="name-of-bank">{{ bank.name }}<span> ({{bank.code}})</span></div>
+          </div>
+        </mat-option>
+      </mat-select>
+      <div style="margin-top: 5px"
+        *ngIf="form.get('nameOfBank')!.invalid && form.get('nameOfBank')!.errors && (form.get('nameOfBank')!.dirty || form.get('nameOfBank')!.touched)">
+        <small class="text-danger"
+               *ngIf="form.get('nameOfBank')!.hasError('required')">
+          <i class="fas fa-light fa-exclamation" style="font-size: 15px"></i>
+          <span style="font-weight: 500; padding-left: 5px">Vui lòng nhập đầy đủ thông tin</span>
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{ inputdata.account }} <span style="color: red">{{ inputdata.icon }}</span></label>
+      <input type="text" formControlName="cardNumber" class="d-flex form-input" placeholder="Nhập số tài khoản" (focusout)="fetchAccountName()" appNumberOnly maxlength="34">
+      <div style="margin-top: 5px"
+        *ngIf="form.get('cardNumber')!.invalid && form.get('cardNumber')!.errors && (form.get('cardNumber')!.dirty || form.get('cardNumber')!.touched)">
+        <small class="text-danger"
+               *ngIf="form.get('cardNumber')!.hasError('required')">
+          <i class="fas fa-light fa-exclamation" style="font-size: 15px"></i>
+          <span style="font-weight: 500; padding-left: 5px">Vui lòng nhập đầy đủ thông tin</span>
+        </small>
+        <small class="text-danger" *ngIf="form.get('cardNumber')!.hasError('maxlength')">
+          <i class="fas fa-light fa-exclamation" style="font-size: 15px"></i>
+          <span style="font-weight: 500; padding-left: 5px"> Số tài khoản không được vượt quá 34 ký tự.</span>
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{ inputdata.username }} <span style="color: red">{{ inputdata.icon }}</span></label>
+      <input type="text" formControlName="accountName" class="d-flex form-input" placeholder="Nhập tên chủ tài khoản">
+    </div>
+    <div class="form-group">
+      <label>{{ inputdata.evocative }} <span style="color: red">{{ inputdata.icon }}</span></label>
+      <input type="text" formControlName="nickname" class="d-flex form-input" placeholder="Nhập tên gợi nhớ">
+    </div>
+  </form>
+</div>
+<div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="close">
+      <button type="button" class="clear-btn btn-sm" (click)="closeup()">Đóng</button>
+    </div>
+    <div class="save-btn">
+      <button type="submit" class="clear-btn btn-sm" (click)="saveUser()">Lưu</button>
+    </div>
+  </div>
+</div>

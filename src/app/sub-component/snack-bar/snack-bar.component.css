@@ -1,0 +1,17 @@
+.custom-snackbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #a8e7b4;
+  border: 1px solid #0ce8ef;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.mess span{
+  padding-left: 10px;
+}
+
+
+
+

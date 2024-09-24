@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between">
+  <div class="title"></div>
+  <div class="close-icon"><img src="../../../assets/images/close_icon.svg" width="20px" height="20px" (click)="closeUp()"></div>
+</div>
+<div mat-dialog-content>
+  <div class="content-container">
+    <img src="../../../assets/images/Error.svg" alt="">
+    <div class="text-content">
+      <div class="text-title">{{inputdata.title}}</div>
+      <div class="text-messenge">
+        {{inputdata.text}}.
+      </div>
+      <div class="error-code">{{inputdata.subtitle}}: <span style="font-weight: 500">{{inputdata.responseCode}}</span></div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="">
+    <div class="close">
+      <button type="button" class="clear-btn" (click)="closeUp()">{{inputdata.close}}</button>
+    </div>
+    <div class="request">
+      <button type="submit" class="clear-btn">{{inputdata.require}}</button>
+    </div>
+  </div>
+</div>
+

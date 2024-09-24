@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between">
+  <div></div>
+  <div class="close-icon">
+    <img src="../../../assets/images/close_icon.svg" width="20px" height="20px" (click)="closeUp()">
+  </div>
+</div>
+<div mat-dialog-content>
+  <h2>Nhập tên người duyệt</h2>
+  <div class="text">
+    <input matInput placeholder="Nhập tên người duyệt" [(ngModel)]="approverName" />
+  </div>
+</div>
+<div mat-dialog-actions class="action-buttons">
+  <button type="button" class="clear-btn close-btn" (click)="closeUp()">Đóng</button>
+  <button type="submit" class="clear-btn save-btn" (click)="confirmUp()" style="margin-left: 10px">Đồng ý</button>
+</div>

@@ -1,0 +1,49 @@
+.close-icon {
+  cursor: pointer;
+}
+
+.col-01, .col-02 {
+  width: 50%;
+}
+
+.rol-1, .rol-2, .rol-3, rol-4 {
+  margin: 20px 0px;
+}
+
+.label {
+  color: #6d83a7;
+  font-weight: 500;
+  padding: 5px 0px;
+}
+
+.form-group {
+  margin: 20px 0px;
+}
+
+label {
+  padding: 5px 0px;
+}
+
+.input {
+  font-size: 16px;
+}
+
+.close .clear-btn {
+  letter-spacing: 0.25px;
+  margin: 8px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  background: var(--alias-primary-200, #DAE4FF);
+  color: blueviolet;
+  border: 1px solid blueviolet;
+  width: 100px;
+}
+
+.close .clear-btn:hover {
+  border: 1px solid aqua;
+  background-color: rgb(69, 12, 225);
+  color: white;
+}
+

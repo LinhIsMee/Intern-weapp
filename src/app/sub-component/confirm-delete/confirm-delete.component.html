@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between">
+  <div></div>
+  <div class="close-icon">
+    <img src="../../../assets/images/close_icon.svg" width="20px" height="20px" (click)="closeUp()">
+  </div>
+</div>
+<div mat-dialog-content>
+  <div class="content-container">
+    <img src="../../../assets/images/Error.svg" alt="">
+    <div class="text-content">
+      <div class="text-title">{{data.title}}</div>
+      <div class="text-content">
+        {{data.question}}
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="">
+    <div class="close">
+      <button type="button" class="clear-btn" (click)="closeUp()">Đóng</button>
+    </div>
+    <div class="save-btn">
+      <button type="submit" class="clear-btn" (click)="deleteUp()">{{data.delete}}</button>
+    </div>
+  </div>
+</div>

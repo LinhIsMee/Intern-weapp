@@ -1,0 +1,51 @@
+.clear-btn {
+  border: 0;
+  letter-spacing: 0.25px;
+  margin: 10px 0;
+  padding: 7px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  /*width: 100%;*/
+  border: 1px solid blueviolet;
+}
+
+.close-btn {
+  background: var(--alias-primary-200, #DAE4FF);
+  color: blueviolet;
+}
+
+.save-btn {
+  background-color: blueviolet;
+  color: white;
+}
+
+.save-btn:hover {
+  border: 1px solid aqua;
+  background-color: rgb(69, 12, 225);
+  color: white;
+}
+
+.close-btn:hover {
+  border: 1px solid aqua;
+  background-color: rgb(69, 12, 225);
+  color: white;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text input {
+  all: unset;
+  border: 1px solid gray;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 3px;
+}
+.text input:hover{
+  border: 2px solid aqua;
+}

@@ -1,0 +1,271 @@
+.main-content {
+  background: linear-gradient(to right, #e0ffff, #d4e5f6, #f0f9ff);
+}
+
+.title {
+  display: flex;
+  margin-left: 26px;
+}
+
+.title-container {
+  display: flex;
+  align-content: center;
+}
+
+.beneficiary-container {
+  margin: 26px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.beneficary-header {
+  border: 1px solid aqua;
+  width: max-content;
+  border-radius: 25px;
+  background-color: aqua;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.cnt {
+  padding: 5px 20px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+}
+
+.beneficary-box {
+  background-color: white !important;
+  padding-bottom: 20px;
+}
+
+.beneficary-box .beneficary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.beneficary-box .search-container {
+  /* float: right; */
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beneficary-box input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.beneficary-box .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: blueviolet;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.beneficary-box .search-container button:hover,
+.btn:hover {
+  border: 1px solid aqua;
+  background-color: rgb(69, 12, 225);
+}
+
+.beneficary-box .search-container .btn:hover,
+.btnbutton .btn:hover {
+  border-radius: 25px;
+}
+
+.beneficary-box .search-container input:hover {
+  border: 1px solid aqua
+}
+
+.btnbutton {
+  background-color: blueviolet;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+.table-emty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.75rem;
+}
+
+.emty-img {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.empty-text {
+  display: block;
+  letter-spacing: 0.25px;
+}
+
+.empty-content{
+  margin-top: 16px;
+}
+
+
+.beneficary-list-box {
+  padding: 12px 20px;
+  align-items: center;
+  display: flex;
+  align-content: center;
+}
+
+.table-list {
+  padding: 20px;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid rgb(188, 183, 193);
+  border-radius: 5px;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.row-01 {
+  width: 5%;
+}
+
+.row-02 {
+  width: 10%;
+}
+
+.row-03 {
+  width: 75%;
+}
+
+.row-04 {
+  width: 10%;
+}
+
+.checkbox-label,
+.action {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+  height: 100%;
+}
+
+.ticket,
+.action {
+  width: 100%;
+}
+
+.content-input {
+  color: black;
+}
+
+.action .approved, .action .confused{
+  margin-right: 5px;
+  cursor: pointer;
+  color: #6d83a7;
+  display: flex;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background: var(--alias-primary-200, #DAE4FF);
+  color: rgb(130, 86, 246);
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgb(163, 127, 253);
+  width: fit-content;
+  font-weight: 500;
+}
+
+.action .confused{
+  color: white;
+  background-color: blueviolet;
+}
+
+.action .approved:hover, .action .confused:hover {
+  color: white;
+  background-color: rgb(69, 12, 225);
+  border: 1px solid rgb(163, 127, 253);
+}
+
+.delete i:hover {
+  color: blue;
+}
+
+.update i:hover {
+  color: blue;
+}
+
+.content-label {
+  font-size: 14px;
+  color: #6d83a7;
+  font-style: normal;
+}
+
+.custom-placeholder .mat-select-placeholder {
+  text-align: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+tr.mat-header-row {
+  background-color: rgb(69, 12, 225);
+}
+
+.mat-header-cell {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: rgb(69, 12, 225) !important;
+}
+
+.card-number {
+  cursor: pointer;
+}
+
+.card-number:hover {
+  text-decoration: underline;
+  font-weight: 500;
+  color: rgb(69, 12, 225);
+}
+.maker-badge{
+  /*margin: 8px;*/
+  display: flex;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background: var(--alias-primary-200, #bcfda4);
+  color: rgb(50, 214, 3);
+  align-items: center;
+  border: 1px solid rgb(83, 221, 0);
+  font-size: 13px;
+  width: fit-content;
+}
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  padding-right: 0;
+  width: 250px;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left: 0;
+  width: 100px;
+  text-align: center;
+}
+

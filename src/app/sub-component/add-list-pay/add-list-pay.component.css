@@ -1,0 +1,159 @@
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.clear-btn {
+  border: 0;
+  letter-spacing: 0.25px;
+  margin: 8px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100px
+}
+
+.close .clear-btn {
+  background: var(--alias-primary-200, #DAE4FF);
+  color: blueviolet;
+  border: 1px solid blueviolet;
+}
+
+.save-btn .clear-btn {
+  background-color: blueviolet;
+  color: white;
+}
+
+.save-btn .clear-btn:hover, .close .clear-btn:hover {
+  border: 1px solid aqua;
+  background-color: rgb(69, 12, 225);
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  padding-bottom: 10px;
+}
+
+.form-input {
+  width: 100%;
+  font-size: 15px;
+  padding: 14px;
+  border-radius: 5px;
+  border: 1px solid #cbc5c5;
+}
+
+.form-input:focus {
+  border: 1px solid aqua;
+}
+
+.form-group:focus-within .form-input {
+  border: 1px solid aqua;
+  outline: none;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
+
+label {
+  font-weight: 500;
+}
+
+.name-of-bank {
+  padding-left: 20px;
+}
+
+.text-danger img {
+  color: red;
+}
+
+.search {
+  background-color: white;
+  width: inherit;
+  height: inherit;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #cbc5c5;
+}
+
+.search:hover {
+  border: 1px solid aqua;
+}
+
+.search input {
+  all: unset;
+  font: 16px system-ui;
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
+}
+
+.search input:focus {
+  border-color: aqua;
+}
+
+.search img {
+  color: #fff;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+}
+
+.search-btn {
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+}
+
+.table-emty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.75rem;
+}
+
+.table-emty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.emty-img {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.empty-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.25px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.empty-content{
+  font-size: .75rem!important;
+}
+
+input.ng-invalid.ng-touched,
+mat-select.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.mat-dialog-content {
+  max-height: 80vh;
+}

@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-between">
+  <div class="title"><h2>Chỉnh sửa người thụ hưởng</h2></div>
+  <div class="close-icon"><img src="../../../assets/images/close_icon.svg" width="20px" height="20px" (click)="closeUp()"></div>
+</div>
+<div mat-dialog-content>
+  <div class="rol-1 d-flex justify-content-between ">
+    <div class="col-01">
+      <div class="label">Loại sản phẩm</div>
+      <div class="input">{{data.typeproduct}}</div>
+    </div>
+    <div class="col-02">
+      <div class="label">Loại giao dịch</div>
+      <div class="input">{{data.typetrans}}</div>
+    </div>
+  </div>
+  <div class="rol-2 d-flex justify-content-between">
+    <div class="col-01">
+      <div class="label">Phương thức chuyển tiền</div>
+      <div class="input">{{data.transmethod}}</div>
+    </div>
+    <div class="col-02">
+      <div class="label">Tên ngân hàng thụ hưởng</div>
+      <div class="input">
+        <img src="{{data.bankAccount.bank.logo}}" width="40px" height="32px">
+        <span style="padding-left: 10px">{{data.bankAccount.bank.name}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="rol-3 d-flex justify-content-between">
+    <div class="col-01">
+      <div class="label">Số tài khoản</div>
+      <div class="input">{{data.bankAccount.code}}</div>
+    </div>
+    <div class="col-02">
+      <div class="label">Tên chủ thẻ</div>
+      <div class="input">{{data.bankAccount.name}}</div>
+    </div>
+  </div>
+
+  <form>
+    <div class="form-group" [formGroup]="beneficiaryForm" (ngSubmit)="onSubmit()">
+      <label style="font-weight: 500">Tên gợi nhớ <span style="color: red">*</span></label>
+      <input type="text" formControlName="nickname" class="form-control" placeholder="Nhập tên gợi nhớ">
+    </div>
+  </form>
+</div>
+<div class="action">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="close">
+      <button type="button" class="clear-btn btn-sm"  (click)="closeUp()" >Đóng</button>
+    </div>
+    <div class="save-btn">
+      <button type="submit" class="clear-btn btn-sm" [disabled]="beneficiaryForm.invalid" (click)="onSubmit()"> Cập nhật</button>
+    </div>
+  </div>
+</div>

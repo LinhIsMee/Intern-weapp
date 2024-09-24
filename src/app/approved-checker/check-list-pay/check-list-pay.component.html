@@ -1,0 +1,91 @@
+<app-header-checker></app-header-checker>
+<div
+  class="main-content"
+  style="background: linear-gradient(to right, #f0f9ff, #ebfeff, #e3f3ff);; height: 100vh; width: 100%"
+>
+  <div class="title">
+    <div class="title-container">
+      <div class="title-text" style="color: #6d83a7; font-weight: 600">
+        Beneficiary management
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="beneficiary-container">
+      <div class="beneficary-content">
+        <h1>Quản lý phê duyệt</h1>
+        <div class="beneficary-header">
+          <span class="cnt"><span>Thanh toán và chuyển tiền</span></span>
+        </div>
+        <div class="beneficary-box">
+          <!--                     Ko call được API hoặc danh sách trống -->
+          <div *ngIf="!apiSuccess; else tableContent" class="table-emty-container">
+            <div class="table-emty">
+              <div class="empty-data">
+                <div class="emty-img">
+                  <img src="./../../assets/images/empty.jpg" alt=""/>
+                </div>
+                <span class="empty-content" style="color: #6d83a7"
+                >Danh sách thụ hưởng trống</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Hiển thị danh sách -->
+          <ng-template #tableContent>
+            <div *ngIf="hasResults" class="table-list">
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="cardOwnerName">
+                  <th mat-header-cell *matHeaderCellDef>Tên chủ thẻ</th>
+                  <td mat-cell *matCellDef="let element"> {{ element.bankAccount.name }}</td>
+                </ng-container>
+                <ng-container matColumnDef="logo">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element">
+                    <img
+                      class="bank-logo"
+                      src="{{element.bankAccount.bank.logo}}"
+                      style="width: 50px ; height: 30px"
+                      alt=""
+                    /></td>
+                </ng-container>
+                <ng-container matColumnDef="cardNumber">
+                  <th mat-header-cell *matHeaderCellDef> Số tài khoản</th>
+                  <td mat-cell *matCellDef="let element" matTooltip="Xem chi tiết"
+                      class="card-number" (click)="detailShow(element)" > {{ element.bankAccount.code }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="bankName">
+                  <th mat-header-cell *matHeaderCellDef>Tên ngân hàng hưởng thụ</th>
+                  <td mat-cell *matCellDef="let element"> {{ element.bankAccount.bank.name }}
+                    <span> ({{ element.bankAccount.bank.shortname }})</span></td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef>Hành động</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="action">
+                      <button class="approved" (click)="approvedShow(element)"> Phê duyệt
+                      </button>
+                      <button class="confused" (click)="rejectShow(element)">
+                       Từ chối
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+          </ng-template>
+          <app-pagination *ngIf="totalPages > 1"
+                          [pageSize]="pageSize"
+                          [pageIndex]="pageIndex - 1"
+                          [totalItems]="totalPages * pageSize"
+                          (pageChange)="onChangePage($event + 1)">
+          </app-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

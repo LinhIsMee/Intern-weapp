@@ -1,0 +1,46 @@
+<nav class="navbar" style="background: linear-gradient(to right, #f0f9ff, #ebfeff, #e3f3ff);">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btnbutton">
+                <button
+                        class="btn"
+                        type="button"
+                        style="color: white; font-weight: bold"
+                >
+                    <i class="fas fa-question"></i>
+                    Support
+                </button>
+            </div>
+            <div class="menu d-flex">
+                <a href="#search" class="menu-item"><i class="fas fa-search"></i></a>
+                <a href="#call" class="menu-item"><i class="fas fa-phone"></i></a>
+                <a href="#noti" class="menu-item"><i class="fas fa-bell"></i></a>
+                <div class="user">
+                    <span class="maker-badge fs-xs fw-semibold">Maker</span>
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="multi-box d-flex align-items-center">
+                    <img
+                            src="../../assets/images/sample_avatar.png"
+                            alt="#"
+                            class="avatar"
+                    />
+                    <div class="username" style="color: blueviolet">
+                        <button mat-button [matMenuTriggerFor]="menu" style="font-weight: 600">Maker</button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item><i class="fas fa-light fa-user" style="color: rgb(69, 12, 225)"></i>
+                                <span class="text-icon">Thông tin tài khoản</span></button>
+                            <button mat-menu-item><i class="fas fa-light fa-key"
+                                                     style="color: rgb(69, 12, 225)"></i><span class="text-icon">Đổi mật khẩu</span>
+                            </button>
+                            <button mat-menu-item><i class="fas fa-sync-alt" style="color: rgb(69, 12, 225)"></i><span
+                                    class="text-icon">Đăng xuất</span></button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
