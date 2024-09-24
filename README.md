@@ -1,3 +1,7 @@
+Còn có folder NodeModule nhưng do file này chứa thư viện khá nặng nên ko push lên được.
+Có thể chạy lệnh "npm i" để tạo nhé!
+
+
 # PayAndTransferWebapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
