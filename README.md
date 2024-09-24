@@ -1,4 +1,4 @@
-Còn có folder NodeModule nhưng do file này chứa thư viện khá nặng nên ko push lên được.
+Còn có folder Node_Modules nhưng do file này chứa thư viện khá nặng nên ko push lên được.
 Có thể chạy lệnh "npm i" để tạo nhé!
 
 
